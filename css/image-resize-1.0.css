@@ -1,0 +1,56 @@
+/* 
+    Document   : image-resize-1.0
+    Created on : Sep 1, 2012, 8:48:37 AM
+    Author     : Agustín Bouillet
+    Description:
+        Define estilos generales
+*/
+
+.image-resize {
+   /* IE 8 */
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+   /* IE 5-7 */
+   filter: alpha(opacity=0);
+
+   /* Netscape */
+   -moz-opacity: 0;
+
+   /* Safari 1.x */
+   -khtml-opacity: 0;
+
+   /* Good browsers */
+   opacity: 0;
+}
+.image-resize_onShow {
+   /* IE 8 */
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+
+   /* IE 5-7 */
+   filter: alpha(opacity=100);
+
+   /* Netscape */
+   -moz-opacity: 1;
+
+   /* Safari 1.x */
+   -khtml-opacity: 1;
+
+   /* Good browsers */
+   opacity: 1;
+}
+/*
+.image-resize_attr {
+   top: 50%;
+   left:50%;
+   position: absolute
+}
+*/
+* html .image-resize_containerAttr,
+.image-resize_containerAttr {
+   overflow: hidden !important;
+   position: relative;
+   background-color:#f4f4f4;
+   background-image: url("../images/camera.png");
+   background-repeat: no-repeat;
+   background-position: center center;
+}
