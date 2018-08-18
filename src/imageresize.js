@@ -6,7 +6,6 @@
  url        : www.bouillet.com.ar
  Description:
  */
-
 (function($) {
    $.fn.encuadrador = function(options) {
 
@@ -23,21 +22,18 @@
       $(this).addClass("image-resize_attr");
 
 
-      // Aplico el atributo para que el contenedor de la image funcione como mascara
+      // Aplico el atributo para que el contenedor de la imagen 
+      // funcione como máscara
       $(this).parent().addClass("image-resize_containerAttr");
 
-//
       // Recorro todas las imágenes
       return this.each(function() {
 
          // Obtengo las pixelss de la imagen
          var src = getSrcWidthHeight(this);
 
-
          // Obtengo las pixelss del contenedor de la imagen
          var cont = getContainerWidthHeight(this);
-
-
 
          // levanto las pixelss y la disposicion que debo usar
          var options = getOptionToSample(cont, src);
@@ -45,22 +41,25 @@
          // Procesos las imagenes
 
          render(this, options, cont);
-
       });
-
 
 
       // Posisiono la imagen dentro de su contenedor realizando el encuadre
       function render(obj, options, cont) {
 
-         var stx = {pixels: "px", minus: "-", space: " "}
-         var margin = {right: Math.round(options["height"] / 2), left: Math.round(options["width"] / 2)}
+         var stx = {
+            pixels: "px", 
+            minus: "-", 
+            space: " "
+         };
+         var margin = {
+            right: Math.round(options["height"] / 2), 
+            left: Math.round(options["width"] / 2)
+         };
 
-
-         console.log("get" + cont["width"] + " " + cont["height"]);
+         //console.log("get" + cont["width"] + " " + cont["height"]);
 
          $(obj).parent().css({
-            // "width": cont["width"] + stx.pixels,
             "height": cont["height"] + stx.pixels,
             "overflow": "hidden !important",
             "position": "relative",
@@ -69,9 +68,6 @@
             "background-position": "center center",
          });
 
-
-
-
          // Posisiono la imagen
          $(obj).delay(opts.delaySpeed).css({
             "top": "50%",
@@ -79,20 +75,32 @@
             "position": "absolute",
             "height": options["height"] + stx.pixels,
             "width": (options["width"] + 1) + stx.pixels,
-            "margin": stx.minus + margin.right + stx.pixels + stx.space + "0" + stx.space + "0" + stx.pixels + stx.space + stx.minus + margin.left + stx.pixels
+            "margin": stx.minus 
+                     + margin.right 
+                     + stx.pixels 
+                     + stx.space 
+                     + "0" 
+                     + stx.space 
+                     + "0" 
+                     + stx.pixels 
+                     + stx.space 
+                     + stx.minus 
+                     + margin.left 
+                     + stx.pixels
          });
 
          // Muestra la imagen aplicando un efecto
          $(obj).delay(opts.delaySpeed).animate({
             "opacity": "1",
-            "-ms-filter": "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)", // IE 8
-            "filter": "alpha(opacity=100)", // IE 5-7
-            "-moz-opacity": "1", // Netscape
-            "-khtml-opacity": "1" // Safari 1.x
+            // IE 8
+            "-ms-filter": "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)", 
+            // IE 5-7
+            "filter": "alpha(opacity=100)", 
+            // Netscape
+            "-moz-opacity": "1", 
+            // Safari 1.x
+            "-khtml-opacity": "1" 
          }, opts.fadeInSpeed);
-
-         //  alert(options["height"] + stx.space + options["width"]);
-
       }
 
 
@@ -100,8 +108,10 @@
        * Devuelve las pixelss de las imagenes redimensionadas
        */
       function getResizedSize(cont, src) {
-         var h = Math.round((cont["width"] * src["height"]) / src["width"]); // Altura final segun la reduccion
-         var w = Math.round((cont["height"] * src["width"]) / src["height"]); // Ancho final segun la reduccion
+         // Altura final segun la reducción
+         var h = Math.round((cont["width"] * src["height"]) / src["width"]);
+         // Ancho final segun la reducción 
+         var w = Math.round((cont["height"] * src["width"]) / src["height"]); 
 
          // Comprimo el alto de la imagen al alto del contendedor
          var useH = new Array();
